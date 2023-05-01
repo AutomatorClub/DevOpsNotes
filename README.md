@@ -448,3 +448,129 @@ system, but a little risky.
     # sleep 3600; pmset sleepnow           # go to standby in one hour (OSX)
     # defaults write -g com.apple.mouse.scaling -float 8
                                          # OSX mouse acceleration (use -1 to reverse)
+
+# Processes
+
+[Listing](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#ps) | 
+[Priority](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#nice) | 
+[Background/Foreground](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#bgfg) | 
+[Top](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#top) | 
+[Kill](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#kill)
+
+## Listing and PIDs
+
+Each process has a unique number, the PID. A list of all running process
+is retrieved with `ps`.
+
+    # ps -auxefw                         # Extensive list of all running process
+
+However more typical usage is with a pipe or with `pgrep` (for OS X
+install `proctools` from [MacPorts](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#macports) ):
+
+    # ps axww | grep cron
+      586  ??  Is     0:01.48 /usr/sbin/cron -s
+    # ps axjf                            # All processes in a tree format (Linux)
+    # ps aux | grep 'ss[h]'              # Find all ssh pids without the grep pid
+    # pgrep -l sshd                      # Find the PIDs of processes by (part of) name
+    # echo $$                            # The PID of your shell
+    # fuser -va 22/tcp                   # List processes using port 22 (Linux)
+    # pmap PID                           # Memory map of process (hunt memory leaks) (Linux)
+    # fuser -va /home                    # List processes accessing the /home partition
+    # strace df                          # Trace system calls and signals
+    # truss df                           # same as above on FreeBSD/Solaris/Unixware
+
+## Priority
+
+Change the priority of a running process with `renice`. **Negative
+numbers have a higher priority**, the lowest is -20 and "nice" have a
+positive value.
+
+    # renice -5 586                      # Stronger priority
+    586: old priority 0, new priority -5
+
+Start the process with a defined priority with `nice`. Positive is
+"nice" or weak, negative is strong scheduling priority. Make sure you
+know if `/usr/bin/nice` or the shell built-in is used (check with
+`# which nice`).
+
+    # nice -n -5 top                     # Stronger priority (/usr/bin/nice)
+    # nice -n 5 top                      # Weaker priority (/usr/bin/nice)
+    # nice +5 top                        # tcsh builtin nice (same as above!)
+
+While nice changes the CPU scheduler, an other useful command `ionice`
+will schedule the disk IO. This is very useful for intensive IO
+application (e.g. compiling). You can select a class (idle - best
+effort - real time), the man page is short and well explained.
+
+    # ionice c3 -p123                    # set idle class for pid 123 (Linux only)
+    # ionice -c2 -n0 firefox             # Run firefox with best effort and high priority
+    # ionice -c3 -p$$                    # Set the actual shell to idle priority
+
+The last command is very useful to compile (or debug) a large project.
+Every command launched from this shell will have a lover priority. `$$`
+is your shell pid (try echo \$\$).  
+FreeBSD uses `idprio/rtprio` (0 = max priority, 31 = most idle):
+
+    # idprio 31 make                     # compile in the lowest priority
+    # idprio 31 -1234                    # set PID 1234 with lowest priority
+    # idprio -t -1234                    # -t removes any real time/idle priority
+
+## Background/Foreground
+
+When started from a shell, processes can be brought in the background
+and back to the foreground with \[Ctrl\]-\[Z\] (^Z), `bg` and `fg`. List
+the processes with `jobs`. When needed detach from the terminal with
+`disown`.
+
+    # ping cb.vu > ping.log
+    ^Z                                   # ping is suspended (stopped) with [Ctrl]-[Z] 
+    # bg                                 # put in background and continues running
+    # jobs -l                            # List processes in background
+    [1]  - 36232 Running                       ping cb.vu > ping.log
+    [2]  + 36233 Suspended (tty output)        top
+    # fg %2                              # Bring process 2 back in foreground
+
+    # make                               # start a long compile job but need to leave the terminal
+    ^Z                                   # suspended (stopped) with [Ctrl]-[Z] 
+    # bg                                 # put in background and continues running
+    # disown -h %1                       # detatch process from terminal, won't be killed at logout
+
+No straight forward way to re-attach the process to a new terminal, try
+[reptyr](https://github.com/nelhage/reptyr) (Linux).  
+Use `nohup` to start a process which has to keep running when the shell
+is closed (immune to hangups).
+
+    # nohup ping -i 60 > ping.log &
+
+## Top
+
+The program `top` displays running information of processes. See also
+the program `htop` from htop.sourceforge.net (a more powerful version of
+top) which runs on Linux and FreeBSD (`ports/sysutils/htop/`). While top
+is running press the key h for a help overview. Useful keys are:
+
+- **u \[user name\]** To display only the processes belonging to the
+  user. Use + or blank to see all users
+- **k \[pid\]** Kill the process with pid.
+- **1** To display all processors statistics (Linux only)
+- **R** Toggle normal/reverse sort.
+
+## Signals/Kill
+
+Terminate or send a signal with `kill` or `killall`.
+
+    # ping -i 60 cb.vu > ping.log &
+    [1] 4712
+    # kill -s TERM 4712                  # same as kill -15 4712
+    # killall -1 httpd                   # Kill HUP processes by exact name
+    # pkill -9 http                      # Kill TERM processes by (part of) name
+    # pkill -TERM -u www                 # Kill TERM processes owned by www
+    # fuser -k -TERM -m /home            # Kill every process accessing /home (to umount)
+
+Important signals are:
+
+- 1 `HUP` (hang up)
+- 2 `INT` (interrupt)
+- 3 `QUIT` (quit)
+- 9 `KILL` (non-catchable, non-ignorable kill)
+- 15 `TERM` (software termination signal)
