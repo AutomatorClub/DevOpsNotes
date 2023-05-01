@@ -6,41 +6,41 @@ with concise explanations, however the reader is supposed to know what
 s/he is doing.  
 
 1.  [System](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#system)
-2.  [Processes](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#processes)
-3.  [File System](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#filesystem)
-4.  [Network](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#network)
-5.  [SSH SCP](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#ssh)
-6.  [VPN with SSH](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#vpn)
-7.  [RSYNC](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#rsync)
-8.  [SUDO](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#sudo)
-9.  [Encrypt Files](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#crypt)
-10. [Encrypt Partitions](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#cryptpart)
-11. [SSL Certificates](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#certs)
-12. [CVS](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#cvs)
-13. [SVN](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#svn)
-14. [Useful Commands](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#other)
-15. [Install Software](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#software)
-16. [Convert Media](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#convert)
-17. [Printing](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#printing)
-18. [Databases](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#databases)
-19. [Disk Quota](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#quota)
-20. [Shells](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#shells)
-21. [Scripting](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#scripting)
-22. [Programming](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#programming)
-23. [Online Help](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#onlinehelp)
+2.  [Processes](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#processes)
+3.  [File System](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#filesystem)
+4.  [Network](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#network)
+5.  [SSH SCP](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#ssh)
+6.  [VPN with SSH](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#vpn)
+7.  [RSYNC](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#rsync)
+8.  [SUDO](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#sudo)
+9.  [Encrypt Files](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#crypt)
+10. [Encrypt Partitions](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#cryptpart)
+11. [SSL Certificates](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#certs)
+12. [CVS](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#cvs)
+13. [SVN](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#svn)
+14. [Useful Commands](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#other)
+15. [Install Software](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#software)
+16. [Convert Media](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#convert)
+17. [Printing](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#printing)
+18. [Databases](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#databases)
+19. [Disk Quota](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#quota)
+20. [Shells](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#shells)
+21. [Scripting](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#scripting)
+22. [Programming](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#programming)
+23. [Online Help](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#onlinehelp)
 
 
 # System
 
-[Hardware](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#hardwareinfo)|
-[Statistics](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#loadstats) |
-[Users](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#users)|
-[Limits](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#limits)|
-[Runlevels](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#runlevels)|
-[root password](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#resetpasswd)|
-[Compile kernel](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#compilekernel)|
-[Repair grub](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#grub)|
-[Misc](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#sysmisc)
+[Hardware](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#hardwareinfo)|
+[Statistics](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#loadstats) |
+[Users](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#users)|
+[Limits](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#limits)|
+[Runlevels](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#runlevels)|
+[root password](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#resetpasswd)|
+[Compile kernel](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#compilekernel)|
+[Repair grub](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#grub)|
+[Misc](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#sysmisc)
 
 
 Running kernel and system information
