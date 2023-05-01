@@ -5,7 +5,7 @@ are useful for IT work or for advanced users. This is a practical guide
 with concise explanations, however the reader is supposed to know what
 s/he is doing.  
 
-1.  [System](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#sysinfo)
+1.  [System](https://github.com/AutomatorClub/DevOpsNotes/blob/main/README.md#system)
 2.  [Processes](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#processes)
 3.  [File System](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#filesystem)
 4.  [Network](https://github.com/AutomatorClub/DevOpsNotes/edit/main/README.md#network)
